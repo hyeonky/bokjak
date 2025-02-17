@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { color, font } from '../styled/theme'
 import { media } from '../styled/media'
 
+// 카드 호버
 export const HoverItemWrap = styled.div`
   position: absolute;
   top: 50%;

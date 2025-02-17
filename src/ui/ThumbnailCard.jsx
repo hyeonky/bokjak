@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ThumbnailCardHover from './ThumbnailCardHover'
 import styled from 'styled-components'
 
+// 카드
 const ThumbItemWrap = styled.div`
   display: flex;
   justify-content: flex-start;
