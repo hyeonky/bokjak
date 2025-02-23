@@ -207,9 +207,6 @@ export const BokjakModalCont = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  .dimmed {
-    z-index: 9998;
-  }
 `
 export const BokjakDetailCont = styled.div`
   padding: 20px;

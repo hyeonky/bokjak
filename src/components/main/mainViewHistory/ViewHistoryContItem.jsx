@@ -13,7 +13,7 @@ const ViewHistoryContItem = ({ content, ...props }) => {
         <img src={`${bgurl}${content.backdrop_path}`} alt={title} />
 
         <div className="icon">
-          <Link>
+          <Link to={`/movie/${content.id}`}>
             <IconButton
               className="border"
               icon={<Play size={24} weight="fill" />}
@@ -28,7 +28,9 @@ const ViewHistoryContItem = ({ content, ...props }) => {
           <h2>{title}</h2>
           <span>{desc}</span>
         </div>
-        <IconButton className="none" icon={<Info size={24} />} text="Info" />
+        <Link to={`/movie/${content.id}`}>
+          <IconButton className="none" icon={<Info size={24} />} text="Info" />
+        </Link>
       </InfoCont>
     </ViewHistoryItemCont>
   )

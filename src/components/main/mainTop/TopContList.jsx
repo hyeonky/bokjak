@@ -25,6 +25,7 @@ const TopContList = () => {
   useEffect(() => {
     dispatch(getTrending())
   }, [])
+
   const getTitle = () => {
     if (location.pathname.includes('/movie')) return '🎬 이번주 영화 TOP 10'
     if (location.pathname.includes('/drama')) return '📺 이번주 시리즈 TOP 10'

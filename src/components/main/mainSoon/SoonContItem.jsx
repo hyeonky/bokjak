@@ -1,5 +1,5 @@
 import { BarButton, Dimmed, IconButton } from '../../../ui'
-import { BellSimple, Play, X } from '@phosphor-icons/react'
+import { BellSimple, Link, Play, X } from '@phosphor-icons/react'
 import AgeLabel from '../../../ui/AgeLabel'
 import {
   ButtonGroup,
@@ -104,6 +104,7 @@ const SoonContItem = ({ content, ...props }) => {
               <p>{desc}</p>
             </div>
             <ButtonGroup>
+              <Link></Link>
               <BarButton text="미리보기" width="366px" height="42px" />
               <IconButton
                 icon={<BellSimple size={24} />}

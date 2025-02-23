@@ -1,9 +1,10 @@
-.swiper-slide:nth-child(1) .posX,
-.swiper-slide:nth-child(6) .posX {
+.swiper-slide:nth-child(1) .cardHover,
+.swiper-slide:nth-child(6) .cardHover {
   border: 5px solid #ff0;
-  transform: translate(100%, -50%) scale(1);
+  transform: translate(-28%, -50%) scale(1);
 }
-.swiper-slide:nth-child(5) .posX {
+.swiper-slide:nth-of-type(5) .cardHover,
+.swiper-slide:nth-of-type(10) .cardHover {
   border: 5px solid #ff0;
-  transform: translate(20%, -50%) scale(1);
+  transform: translate(50%, -50%) scale(1);
 }

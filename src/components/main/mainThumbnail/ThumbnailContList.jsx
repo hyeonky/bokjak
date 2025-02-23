@@ -24,12 +24,23 @@ const ThumbnailContList = ({
   isRandom = false,
 }) => {
   const { movies, tvShows, trending } = useSelector((state) => state.contentR)
+  const { currentContent } = useSelector((state) => state.detailR)
+  const { authed } = useSelector((state) => state.authR)
+
   const dispatch = useDispatch()
   const location = useLocation()
 
   const [filteredContent, setFilteredContent] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth) // 화면 크기 업데이트
+    }
 
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize) // 컴포넌트가 언마운트 될 때 이벤트 리스너 제거
+  }, [])
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
@@ -61,6 +72,15 @@ const ThumbnailContList = ({
 
       if (isRandom) {
         tempContent = shuffleArray(tempContent)
+      }
+
+      const MIN_ITEMS = 1 // 최소 12개 유지
+
+      let thumnail = filteredContent.slice(0, MIN_ITEMS)
+
+      // 데이터가 12개보다 부족하면 반복해서 채우기
+      while (thumnail.length < MIN_ITEMS && filteredContent.length > 0) {
+        thumnail = [...thumnail, ...filteredContent].slice(0, MIN_ITEMS)
       }
 
       setFilteredContent(tempContent)
@@ -142,17 +162,20 @@ const ThumbnailContList = ({
                   className="swiper-slide"
                   key={`${content.type}-${content.id}`}>
                   <Link
-                    to={`/${content.type}/${content.id}`}
+                    to={`/video/${content.id}`}
                     state={{ previousLocation: location }}>
                     <ThumbnailCard
                       content={content}
-                      onClick={() =>
-                        showDetailModal(
-                          content.type,
-                          content.id,
-                          content.genre_ids
-                        )
-                      }
+                      onClick={() => {
+                        // 데스크탑이 아닐 때만 모달을 여는 함수 호출
+                        if (windowWidth <= 1024) {
+                          showDetailModal(
+                            content.type,
+                            content.id,
+                            content.genre_ids
+                          )
+                        }
+                      }}
                     />
                   </Link>
                 </SwiperSlide>
